@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static Final.src.University.searchClassById;
 import static Final.src.University.searchClassByName;
 
 public class Main {
@@ -49,12 +50,13 @@ public class Main {
         classes.add(class4);
 
 
-        System.out.println("Welcome to the university menu!");
-        System.out.println("1.) Teachers data \n2.) Classes data \n3.) Create a new student \n4.) Create new Class \n5.) Search classes by ID \n6.) Exit");
+
         Scanner scan = new Scanner(System.in);
         int option = 0;
 
         do{
+            System.out.println("Welcome to the university menu!");
+            System.out.println("1.) Teachers data \n2.) Classes data \n3.) Create a new student \n4.) Create new Class \n5.) Search classes by ID \n6.) Exit");
             option = scan.nextInt();
             scan.nextLine();
 
@@ -102,9 +104,26 @@ public class Main {
                 case 4:
                     System.out.println("Enter the new class name: ");
                     String newClassName = scan.nextLine();
+                    System.out.println("Enter the Classroom assigned to the new class: ");
+                    String classRoom = scan.nextLine();
+                    System.out.println("Enter the new class ID(ID1XXX): ");
+                    String classId = scan.nextLine();
 
                     break;
 
+                case 5:
+                    System.out.println("Enter the class ID");
+                    String classIdSearched = scan.nextLine();
+                    Class myIdClass = searchClassById(classIdSearched,classes);
+                    if(myIdClass == null){
+                        System.out.println("The class you are searching for doesn´t exist");
+                    }else{
+                        myIdClass.classInfo();
+                    }
+                    break;
+                case 6:
+                    System.out.println("Leaving...");
+                    break;
 
                 default:
                     System.out.println("Please select one of the options in the menu!");
