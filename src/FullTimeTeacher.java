@@ -13,4 +13,8 @@ public class FullTimeTeacher extends Teacher{
 
         return super.baseSalary * 1.1 * experienceYears ;
     }
+
+    public int getExperienceYears() {
+        return experienceYears;
+    }
 }

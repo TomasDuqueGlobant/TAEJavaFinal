@@ -31,7 +31,7 @@ public class Class {
     }
 
     public void classInfo(){
-        System.out.println("Class name:" + name + ", Classroom: " + assignedClassroom + ", Teacher: " + teacher.getName());
+        System.out.println("Class name: " + name + ", Classroom: " + assignedClassroom + ", Teacher: " + teacher.getName());
         System.out.println("Students: ");
         for(Student student : students){
             System.out.println("- " + student.getName() + ", ID: " + student.getId() + ", Age: " + student.getAge());

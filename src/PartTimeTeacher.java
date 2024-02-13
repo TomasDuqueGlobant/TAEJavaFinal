@@ -12,4 +12,8 @@ public class PartTimeTeacher extends Teacher {
     protected double calculateSalary(){
         return super.baseSalary * activeHoursPerWeek;
     }
+
+    public int getActiveHoursPerWeek() {
+        return activeHoursPerWeek;
+    }
 }

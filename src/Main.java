@@ -9,10 +9,15 @@ public class Main {
 
     public static void main(String[]args){
 
-        FullTimeTeacher ftTeacher1 = new FullTimeTeacher("Juan Andrés Gonzalez",300,4);
+        FullTimeTeacher ftTeacher1 = new FullTimeTeacher("Juan Andrés Gonzalez",3000,4);
         FullTimeTeacher ftTeacher2 = new FullTimeTeacher("Luisa Castro",3200,10);
-        PartTimeTeacher ptTeacher1 = new PartTimeTeacher("WestCol",140,20);
-        PartTimeTeacher ptTeacher2 = new PartTimeTeacher("La Liendra",180,15);
+        PartTimeTeacher ptTeacher1 = new PartTimeTeacher("WestCol",1400,20);
+        PartTimeTeacher ptTeacher2 = new PartTimeTeacher("La Liendra",1800,15);
+        List<Teacher> teachers = new ArrayList<>();
+        teachers.add(ftTeacher1);
+        teachers.add(ftTeacher2);
+        teachers.add(ptTeacher1);
+        teachers.add(ptTeacher2);
         Student student1 = new Student("Tomás","ID001",20);
         Student student2 = new Student("Miguel","ID002",21);
         Student student3 = new Student("Fernado","ID003",22);
@@ -35,6 +40,11 @@ public class Main {
         Class class2 = new Class("English","33-101",students2,ftTeacher2);
         Class class3 = new Class("Cience","35-101",students3,ptTeacher1);
         Class class4 = new Class("Religion","32-201",students4,ptTeacher2);
+        List<Class> classes = new ArrayList<>();
+        classes.add(class1);
+        classes.add(class2);
+        classes.add(class3);
+        classes.add(class4);
 
 
         System.out.println("Welcome to the university menu!");
@@ -48,7 +58,32 @@ public class Main {
 
             switch(option){
                 case 1:
+                    for(Teacher teacher : teachers){
+                        System.out.println("- " + teacher.getName());
+                        //String.format para que el resultado solo tenga 2 decimales
+                        System.out.println("    Salary: " + String.format("%.2f",teacher.calculateSalary()));
+                        //instanceof me permite verificar si el teacher es parte de FullTime o PartTime
+                        if(teacher instanceof FullTimeTeacher){
+                            FullTimeTeacher fullTime = (FullTimeTeacher) teacher;
+                            System.out.println("    Years of Experience: " + fullTime.getExperienceYears());
+                        } else if(teacher instanceof PartTimeTeacher) {
+                            PartTimeTeacher partTime = (PartTimeTeacher) teacher;
+                            System.out.println("    Active Hours per Week: " + partTime.getActiveHoursPerWeek());
+                        }
+                    }
+                    break;
+                case 2:
+                    for(Class classn : classes){
+                        classn.classInfo();
+                }
+                    break;
+                case 3:
                     
+                    break;
+
+                default:
+                    System.out.println("Please select one of the options in the menu!");
+
             }
 
 
