@@ -12,7 +12,7 @@ public class Class {
     public Class() {
         this.name = "";
         this.assignedClassroom = "";
-        this.students = null;
+        this.students = new ArrayList<>();
         this.teacher = null;
     }
 
@@ -22,4 +22,22 @@ public class Class {
         this.students = students;
         this.teacher = teacher;
     }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void classInfo(){
+        System.out.println("Class name:" + name + ", Classroom: " + assignedClassroom + ", Teacher: " + teacher.getName());
+        System.out.println("Students: ");
+        for(Student student : students){
+            System.out.println("- " + student.getName() + ", ID: " + student.getId() + ", Age: " + student.getAge());
+        }
+
+    }
+
+
 }

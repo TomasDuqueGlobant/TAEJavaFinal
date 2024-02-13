@@ -1,6 +1,6 @@
 package Final.src;
 
-public class Teacher {
+public abstract class Teacher {
      protected String name;
     protected double baseSalary;
 
