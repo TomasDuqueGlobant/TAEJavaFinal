@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static Final.src.University.searchClassByName;
+
 public class Main {
 
 
@@ -36,10 +38,10 @@ public class Main {
         students3.add(student6);
         students4.add(student2);
         students4.add(student4);
-        Class class1 = new Class("Math","32-101",students1,ftTeacher1);
-        Class class2 = new Class("English","33-101",students2,ftTeacher2);
-        Class class3 = new Class("Cience","35-101",students3,ptTeacher1);
-        Class class4 = new Class("Religion","32-201",students4,ptTeacher2);
+        Class class1 = new Class("Math","32-101","ID1001",students1,ftTeacher1);
+        Class class2 = new Class("English","33-101","ID1002",students2,ftTeacher2);
+        Class class3 = new Class("Cience","35-101","ID1003",students3,ptTeacher1);
+        Class class4 = new Class("Religion","32-201","ID1004",students4,ptTeacher2);
         List<Class> classes = new ArrayList<>();
         classes.add(class1);
         classes.add(class2);
@@ -78,8 +80,31 @@ public class Main {
                 }
                     break;
                 case 3:
-                    
+                    System.out.println("Enter the new student name: ");
+                    String name = scan.nextLine();
+                    System.out.println("Enter the new student ID(IDXXX): ");
+                    String id = scan.nextLine();
+                    System.out.println("Enter the new student age: ");
+                    int age = scan.nextInt();
+                    scan.nextLine();
+                    Student student = new Student(name, id,age);
+                    System.out.println("In which class will the new student be enrolled: ");
+                    String className = scan.nextLine();
+                    Class myClass = searchClassByName(className,classes);
+                    if(myClass == null){
+                        System.out.println("The class you are searching for doesn´t exist");
+                    }else{
+                        myClass.addStudent(student);
+                        myClass.classInfo();
+                        System.out.println("The student was added succsefully!");
+                    }
                     break;
+                case 4:
+                    System.out.println("Enter the new class name: ");
+                    String newClassName = scan.nextLine();
+
+                    break;
+
 
                 default:
                     System.out.println("Please select one of the options in the menu!");
