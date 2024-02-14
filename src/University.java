@@ -22,4 +22,22 @@ public class University {
         return null;
     }
 
+    public static Student searchStudentById(String studentId, List <Student> students){
+        for(Student student: students){
+            if(student.getId().equalsIgnoreCase(studentId)){
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public static Teacher searchTeacherByName(String teacherName, List<Teacher> teachers ){
+        for(Teacher teacher: teachers){
+            if(teacher.getName().equalsIgnoreCase(teacherName)){
+            return teacher;
+            }
+        }
+        return null;
+    }
+
 }
