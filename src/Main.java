@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static Final.src.University.searchClassById;
-import static Final.src.University.searchClassByName;
+import static Final.src.University.*;
 
 public class Main {
 
@@ -31,6 +30,13 @@ public class Main {
         List<Student> students2 = new ArrayList<>();
         List<Student> students3 = new ArrayList<>();
         List<Student> students4 = new ArrayList<>();
+        List<Student> allStudents = new ArrayList<>();
+        allStudents.add(student1);
+        allStudents.add(student2);
+        allStudents.add(student3);
+        allStudents.add(student4);
+        allStudents.add(student5);
+        allStudents.add(student6);
         students1.add(student1);
         students1.add(student2);
         students2.add(student3);
@@ -108,6 +114,36 @@ public class Main {
                     String classRoom = scan.nextLine();
                     System.out.println("Enter the new class ID(ID1XXX): ");
                     String classId = scan.nextLine();
+                    List<Student> students = new ArrayList<>();
+                    int option1 = 0;
+                    do{
+                        System.out.println("Do you want to add a student?: \n1.)Yes \n2.) No ");
+                        option1 = scan.nextInt();
+                        scan.nextLine();
+                        if (option1 == 1){
+                            System.out.println("Enter the student ID");
+                            String studentId = scan.nextLine();
+                            Student studentn = searchStudentById(studentId,allStudents);
+                            if(studentn == null){
+                                System.out.println("The student ID was not found");
+                            }else {
+                                students.add(studentn);
+                                allStudents.add(studentn);
+                                System.out.println("The student was added succesfully!");
+                            }
+                        }
+                    }while(option1 != 2);
+
+                    System.out.println("Enter the teachers name: ");
+                    String teacherName = scan.nextLine();
+                    Teacher teacher1 = searchTeacherByName(teacherName,teachers);
+                    if(teacher1 == null){
+                        System.out.println("The teacher was not found");
+                    }else {
+                        Class classn = new Class(newClassName,classRoom,classId,students,teacher1);
+                        classes.add(classn);
+                    }
+
 
                     break;
 
